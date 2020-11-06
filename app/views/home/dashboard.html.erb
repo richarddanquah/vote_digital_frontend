@@ -1,0 +1,209 @@
+
+<!-- banner section -->
+<section id="home" class="banner">
+    <div id="banner-bg-effect" class="banner-effect"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-12 col-sm-12 order-lg-first mt-lg-0 mt-4">
+                <h1 class="mb-4 title"><strong>Online and USSD(*920*2020#)</strong><br>Voting Platform <strong>with a payment gateway</strong>
+                </h1>
+
+
+
+
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12 order-first text-lg-left text-center">
+                <div>
+                   <img src="/assets/images/pla.png" alt="" class="rounded-circle img-fluid">
+                 
+              
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner section -->
+
+<!-- home page about -->
+<section class="w3l-about">
+    <div class="container">
+        <div class="row about-content">
+            <div class="col-lg-6 info mb-lg-0 mb-sm-5 mb-4 align-center">
+                <h3 class="title">About Us</h3>
+                <h6>VoteDigital is a leading online paid voting platform used to gather instant, trustworthy
+                    results and convenient way of voting.
+                    Headquartered in Accra, Ghana - our core team of voting software experts enable you
+                    to run secure votes and elections online. Vote Digital is powered by RAD Communications
+                    Limited.</h6>
+
+            </div>
+            <div class="col-lg-6">
+                <img src="/assets/images/abs.JPG" class="img-fluid img-shadow" alt="about">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //home page about -->
+
+
+<!-- home page service grids -->
+<section id="services" class="bg-light">
+    <div class="container">
+
+      <div class="row mt-lg-5">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="box-wrap">
+            <div class="icon">
+              <span class="fa fa-briefcase"></span>
+            </div>
+            <h4><a href="#url">Let's help you choose the best plan</a></h4>
+            <p>A Voting Platform that accept payment with cards and mobile money. Serve your customers
+                with a wide range of options they can rely on when paying for your services. With
+                Vote Digital you are guaranteed never to miss a due payment.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="box-wrap">
+            <div class="icon">
+              <span class="fa fa-shield"></span>
+            </div>
+            <h4><a href="#url">Make your decision-making process modern, secure, and effective</a></h4>
+            <p>Our online voting systems let you upgrade from manually counting ballouts without
+                sacrificing the integrity of your vote.
+                <br><br><br>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="box-wrap">
+            <div class="icon">
+              <span class="fa fa-lightbulb-o"></span>
+            </div>
+            <h4><a href="#url">An online voting system with your needs at the forefront</a></h4>
+            <p>From secure polling software to the management of complex voting events - we offer a range of
+                eVoting solutions that exceed expectation.
+                <br><br><br>
+            </p>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+  <!-- //home page service grids -->
+
+
+
+  <!-- services page block 3 -->
+<section class="w3l-mobile-content-6 bg-white">
+    <div class="mobile-info">
+        <!-- /mobile-info-->
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12">
+                        <h3 class="title">How it works (For event managers)</h3>
+                    <!-- <h4 class="section-title">How it works (For event managers)</h4> -->
+                    <p class="text-center">Are you a reality or award show manager?
+                        Harness the power of VoteDigital today!</p>
+                </div>
+            </div>
+            <div class="row mobile-info-inn mx-lg-0 mt-md-6 mt-4">
+                <div class="col-lg-6 image-left">
+                    <img src="assets/images/s.jpg" class="img-fluid" alt="">
+                </div>
+
+
+                    <div class="row mobile-right-grids mb-lg-10 mb-4">
+
+                        <div class="col-8 mobile-right-info">
+
+                            <ul class="list mt-8">
+                                    <li><span class="fa fa-check"></span>Create show manager account</li>
+                                    <li><span class="fa fa-check"></span>Add type of your show to be hosted</li>
+                                    <li><span class="fa fa-check"></span> Create categories and add nominees</li>
+                                    <li><span class="fa fa-check"></span> Set up billing and duration of show</li>
+
+
+                                    <li><span class="fa fa-check"></span> Share your show for voting via social</li>
+                                    <li><span class="fa fa-check"></span> Monitor performance and income on dashboard</li>
+
+                                </ul>
+                        </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- //mobile-info-->
+    </div>
+</section>
+<!-- services page block 3 -->
+
+
+
+
+
+
+
+
+
+
+<!-- homepage blog grids -->
+<section id="blog">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12">
+                <!-- <h4 class="section-title">Latest Contest</h4> -->
+                <h3 class="section-title">Latest Contest</h3>
+            </div>
+        </div>
+
+        <div class="blog-grids row mt-5">
+
+           <% @awards.each_with_index do |award,index| %>
+              <div class="col-lg-6 col-md-6 col-sm-12 blog-grid" id="zoomIn">
+                <a>
+                <figure><%= image_tag('https://res.cloudinary.com/deavqmclh/'+award.avatar,class:"img-fluid", alt:"",style:"height: 350px; width: 500px;") %></figure>
+                </a>
+
+                <div class="container">
+                    <div class="row">
+                      <div class="col text-center">
+                        <%= link_to 'Vote Now', vote_category_path(:id=> award.id), class:"btn btn-primary btn-style" %>
+
+                      </div>
+                    </div>
+                  </div>
+
+                
+
+
+
+              </div>
+
+            <% end %>
+            <div class="col-md-12">
+			<div class="pull-right">
+				<%= will_paginate @awards, renderer:BootstrapPagination::Rails %>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+<!-- //homepage blog grids -->

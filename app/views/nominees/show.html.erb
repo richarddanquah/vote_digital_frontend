@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nominee.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @nominee.category_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @nominee.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @nominee.status %>
+</p>
+
+<p>
+  <strong>Avatar2:</strong>
+  <%= @nominee.avatar2 %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @nominee.user_id %>
+</p>
+
+<p>
+  <strong>Avatar2 url:</strong>
+  <%= @nominee.avatar2_url %>
+</p>
+
+<p>
+  <strong>Image3:</strong>
+  <%= @nominee.image3 %>
+</p>
+
+<%= link_to 'Edit', edit_nominee_path(@nominee) %> |
+<%= link_to 'Back', nominees_path %>

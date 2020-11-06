@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  merchant_id: 1
+  trans_id: MyString
+  customer_number: MyString
+  customer_netowrk: MyString
+  trans_type: MyString
+  amount: MyString
+  reference: MyString
+  pay_status: false
+  award_id: 1
+  category_id: 1
+  nominee_id: 1
+  techo_msg: MyString
+  payment_types: MyString
+  card_name: MyString
+  card_email: MyString
+
+two:
+  merchant_id: 1
+  trans_id: MyString
+  customer_number: MyString
+  customer_netowrk: MyString
+  trans_type: MyString
+  amount: MyString
+  reference: MyString
+  pay_status: false
+  award_id: 1
+  category_id: 1
+  nominee_id: 1
+  techo_msg: MyString
+  payment_types: MyString
+  card_name: MyString
+  card_email: MyString

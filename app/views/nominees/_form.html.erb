@@ -1,0 +1,57 @@
+<%= form_with(model: nominee, local: true) do |form| %>
+  <% if nominee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nominee.errors.count, "error") %> prohibited this nominee from being saved:</h2>
+
+      <ul>
+      <% nominee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :nominee_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.number_field :category_id, id: :nominee_category_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :nominee_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status, id: :nominee_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar2 %>
+    <%= form.text_field :avatar2, id: :nominee_avatar2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :nominee_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar2_url %>
+    <%= form.text_field :avatar2_url, id: :nominee_avatar2_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image3 %>
+    <%= form.text_field :image3, id: :nominee_image3 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

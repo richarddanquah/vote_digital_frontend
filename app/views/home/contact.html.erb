@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoteDigital</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+
+
+    <!-- <link rel="stylesheet" href="http://votedigital.net/assets/css/style-starter.css"> -->
+
+  </head>
+
+  <body>
+<!-- contact page breadcrumns -->
+<section class="inner-banner">
+<div id="banner-bg-effect" class="banner-effect"></div>
+</section>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-padding">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+    </ol>
+</nav>
+<!-- contact page breadcrumns -->
+
+<!-- contact section -->
+<section class="w3l-contact3">
+    <div class="contact1-bg section-gap">
+        <div class="container">
+            <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 px-lg-3 px-0">
+                <h4 class="section-title">Get in touch with us</h4>
+                <p class="text-center">Vote Digital Ghana (business affiliate of RAD Communications LLC)</p>
+            </div>
+            <div class="row contact-main mt-5">
+                <div class="col-md-12">
+                    <div class="column">
+                        <h3 class="header">We are here for you</h3>
+                        <p class="head-main">For more information or inquiry about our products, projects and pricing
+                            please feel free to
+                            get in touch with us.</p>
+                    </div>
+                    <div class="column2">
+                        <div class="contact-para contact-info-align">
+                            <div class="icon">
+                                <span class="fa fa-map-marker"></span>
+                            </div>
+                            <div>
+                                <strong class="info">Address:</strong class="info"> RAD Holdings Headquaters, Achimota,
+                                Ofankor-Barrier, Accra, Atta-Mills, Junction.
+                            </div>
+                        </div>
+                        <div class="contact-info-align">
+                            <div class="icon">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                            <div>
+                                <strong class="info">Phone:</strong class="info"> <a href="tel:+2332474 15140"> +233 0
+                                    2474 15140</a>
+
+                            </div>
+                        </div>
+                        <div class="contact-info-align">
+                            <div class="icon">
+                                <span class="fa fa-envelope-open-o"> </span>
+                            </div>
+                            <div>
+                                <strong class="info">Email:</strong> <a href="mailto:votedigital@radcommllc.com">
+                                        votedigital@radcommllc.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column3">
+                        <h3 class="header follow">Follow us </h3>
+                        <a href="https://web.facebook.com/RADCommLLC/" class="facebook" title="facebook"><span class="fa fa-facebook"></span></a>
+                        <!-- <a href="#twitter" class="twitter" title="twitter"><span class="fa fa-twitter"></span></a> -->
+                        <!-- <a href="#linkedin" class="linkedin" title="linkedin"><span class="fa fa-linkedin"></span></a>
+                        <a href="#instagram" class="instagram" title="instagram"><span
+                                class="fa fa-instagram"></span></a> -->
+                    </div>
+                </div>
+                <!-- map iframe-->
+                <!-- <div class="col-md-6 map mt-lg-0 mt-4">
+                    <iframe
+                        src="https://www.google.com/maps/place/RAD+Communications+Limited/@5.55867,-0.20118,17z/data=!4m5!3m4!1s0xfdf9f354967389d:0x450dd9fa3a9defbb!8m2!3d5.6594617!4d-0.2693008?hl=en"
+                        frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                </div> -->
+                <!-- //map iframe -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-form">
+    <div class="container">
+        <div class="contacts12-main">
+            <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 mb-md-5 mb-3">
+                <h4 class="section-title">we want to hear from you</h4>
+            </div>
+            <!-- contact form -->
+            <form method="post" action="<%= contact_us_path %>">
+                <div class="main-input">
+                    <div>
+                        <input type="text" name="fullname" id="fullname" placeholder="Your Name" class="contact-input"
+                            required />
+                    </div>
+                    <div>
+                        <input type="email" name="email" id="email" placeholder="Your Email "
+                            class="contact-input" required />
+                    </div>
+                    <div>
+                        <input type="text" name="subject" id="subject" placeholder="Subject" class="contact-input"
+                            required />
+                    </div>
+                </div>
+                <textarea class="contact-textarea" name="message" id="message"
+                    placeholder="Type your message here" required></textarea>
+                <div class="text-right">
+                    <button class="btn btn-style btn-primary">Submit</button>
+                </div>
+            </form>
+            <!-- //contact form -->
+        </div>
+    </div>
+</section>
+<!-- //contact section -->
+
+
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- //move top -->
+
+<!-- javascript -->
+<!-- <script src="http://votedigital.net/assets/js/jquery-3.3.1.min.js"></script> -->
+
+<!-- libhtbox -->
+<!-- <script src="http://votedigital.net/assets/js/lightbox-plus-jquery.min.js"></script> -->
+
+<!-- particles -->
+<!-- <script src='http://votedigital.net/assets/js/particles.min.js'></script>
+<script src="http://votedigital.net/assets/js/script.js"></script> -->
+<!-- //particles -->
+
+<!-- owl carousel -->
+<!-- <script src="http://votedigital.net/assets/js/owl.carousel.js"></script> -->
+<script>
+  $(document).ready(function () {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      margin: 10,
+      nav: true,
+      loop: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        767: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  })
+</script>
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<!-- <script src="http://votedigital.net/assets/js/bootstrap.min.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @award.name %>
+</p>
+
+<p>
+  <strong>Merchant:</strong>
+  <%= @award.merchant_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @award.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @award.user_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @award.status %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @award.avatar %>
+</p>
+
+<%= link_to 'Edit', edit_award_path(@award) %> |
+<%= link_to 'Back', awards_path %>

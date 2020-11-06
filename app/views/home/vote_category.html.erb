@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoteDigital</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+
+
+    <!-- <link rel="stylesheet" href="http://votedigital.net/assets/css/style-starter.css"> -->
+
+  </head>
+
+  <body>
+
+
+<section class="inner-banner">
+ <div id="banner-bg-effect" class="banner-effect"></div>
+    </section>
+
+     <% @vote_awards = Award.where(id: params[:id])[0] %>
+
+    <% @vote_cats = Category.where(award_id: params[:id])%>
+
+<!-- stats section -->
+<section id="stats" class="stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 margin-md-60">
+                <h2 class="left-title"><%=@vote_awards.name %></h2>
+                <p class="white">Home / Category</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- //stats section -->
+
+
+
+<!-- homepage blog grids -->
+<section id="blog">
+    <div class="container">
+
+
+        <div class="blog-grids row mt-5">
+
+           <% @vote_cats.each_with_index do |cat,index| %>
+              <div class="col-lg-6 col-md-6 col-sm-12 blog-grid">
+                  <h4><%= cat.name %></h4>
+                  <a>
+                    
+                    <% if cat.award_id == 1 %>
+                   
+                  <figure><img src="assets/images/aca.jpeg" class="img-fluid" alt="" style="height: 300px; width: 350px;"></figure>
+                   <% elsif cat.award_id == 3 %>
+
+                   <figure><img src="assets/images/tea.jpg" class="img-fluid" alt="" style="height: 300px; width: 350px;"></figure>
+                    
+                   <% else %>
+                   <figure><img src="assets/images/pla.png" class="img-fluid" alt="" style="height: 300px; width: 350px;"></figure>
+                    
+                    <% end %>
+                </a>
+
+                
+              
+                    <div class="row">
+                      <div class="col text-center">
+                          <%= link_to 'Vote Now', vote_nominee_path(:id=> cat.id), class:"btn btn-primary btn-style", style: "float:left;margin: 15px 75px;"%>
+
+                      </div>
+                    </div>
+              
+
+                 <br>
+                 <br>
+
+              </div>
+
+            <% end %>
+
+
+
+        </div>
+    </div>
+</section>
+<!-- //homepage blog grids -->
+
+
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- //move top -->
+
+<!-- javascript -->
+<!-- <script src="http://votedigital.net/assets/js/jquery-3.3.1.min.js"></script> -->
+
+<!-- libhtbox -->
+<!-- <script src="http://votedigital.net/assets/js/lightbox-plus-jquery.min.js"></script> -->
+
+<!-- particles -->
+<!-- <script src='http://votedigital.net/assets/js/particles.min.js'></script>
+<script src="http://votedigital.net/assets/js/script.js"></script> -->
+<!-- //particles -->
+
+<!-- owl carousel -->
+<!-- <script src="http://votedigital.net/assets/js/owl.carousel.js"></script> -->
+<script>
+  $(document).ready(function () {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      margin: 10,
+      nav: true,
+      loop: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        767: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  })
+</script>
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<!-- <script src="http://votedigital.net/assets/js/bootstrap.min.js"></script> -->
+  </body>
+</html>

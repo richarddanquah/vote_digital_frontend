@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Award:</strong>
+  <%= @category.award_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @category.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @category.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @category.user_id %>
+</p>
+
+<p>
+  <strong>Avatar1 url:</strong>
+  <%= @category.avatar1_url %>
+</p>
+
+<p>
+  <strong>Image1:</strong>
+  <%= @category.image1 %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

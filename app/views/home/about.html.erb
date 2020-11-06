@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoteDigital</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+
+
+    <!-- <link rel="stylesheet" href="http://votedigital.net/assets/css/style-starter.css"> -->
+
+  </head>
+
+  <body>
+
+<!-- about page breadcrumns -->
+<section class="inner-banner">
+<div id="banner-bg-effect" class="banner-effect"></div>
+</section>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-padding">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">About us</li>
+    </ol>
+</nav>
+<!-- //about page breadcrumns -->
+
+<!-- about page section1-->
+<section class="w3l-about">
+    <div class="container">
+        <div class="row about-content">
+            <div class="col-lg-6 info mb-lg-0 mb-5 align-center">
+                    <span class="title">About Us</span>
+                <h6>VoteDigital is a leading online paid voting platform used to gather instant, trustworthy results and convenient way of voting.
+                     Headquartered in Accra, Ghana - our core team of voting software experts enable you to run secure votes and elections online. Vote Digital is powered by RAD Communications Limited.</h6>
+
+
+            </div>
+            <div class="col-lg-6">
+                <img src="/assets/images/abs.JPG" class="img-fluid img-shadow" alt="about">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //about page section1-->
+
+<!-- about page team section -->
+<section class="w3l-team-main-6">
+        <!-- /team-grids -->
+        <div class="team-content">
+            <div class="container">
+                <div class="row align-items-center">
+                   <!--  <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12">
+                        <h4 class="section-title">The Team</h4>
+
+                    </div> -->
+                </div>
+                <div class="row grid-col-4 text-center mt-5">
+                   <!--  <div class="team-colomn col-lg-4 col-md-6 col-sm-6">
+                        <div class="team-main-6">
+                            <a><img class="img-fluid" src="/assets/images/ceo.jpeg" alt=" " style="height: 400px;"></a>
+                            <h6><a class="title-team-32">Richmond Anim Damoah</a></h6>
+                            <p class="sm-text-32">Chief Executive Officer</p>
+
+                        </div>
+                    </div> -->
+                   <!--  <div class="team-colomn col-lg-4 col-md-6 col-sm-6 mt-md-0 mt-5">
+                        <div class="team-main-6">
+                            <a><img class="img-fluid" src="/assets/images/cto.jpg" alt=" " style="height: 400px;"></a>
+                            <h6><a class="title-team-32">Richard Danquah</a></h6>
+                            <p class="sm-text-32">Chief Technology Officer</p>
+
+                        </div>
+                    </div> --> 
+                  <!--   <div class="team-colomn col-lg-4 col-md-6 col-sm-6 mt-lg-0 mt-5">
+                        <div class="team-main-6">
+                            <a><img class="img-fluid" src="/assets/images/cmo.jpeg" alt=" " style="height: 400px;"></a>
+                            <h6><a class="title-team-32">Justice Kofi Bimpeh</a></h6>
+                            <p class="sm-text-32">Communications &amp; Branding</p>
+
+
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- /team-grids -->
+    </section>
+    <!-- //about page team section -->
+
+
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- //move top -->
+
+<!-- javascript -->
+<!-- <script src="http://votedigital.net/assets/js/jquery-3.3.1.min.js"></script> -->
+
+<!-- libhtbox -->
+<!-- <script src="http://votedigital.net/assets/js/lightbox-plus-jquery.min.js"></script> -->
+
+<!-- particles -->
+<!-- <script src='http://votedigital.net/assets/js/particles.min.js'></script> -->
+<!-- <script src="http://votedigital.net/assets/js/script.js"></script> -->
+<!-- //particles -->
+
+<!-- owl carousel -->
+<!-- <script src="http://votedigital.net/assets/js/owl.carousel.js"></script> -->
+<script>
+  $(document).ready(function () {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      margin: 10,
+      nav: true,
+      loop: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        767: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  })
+</script>
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<!-- <script src="http://votedigital.net/assets/js/bootstrap.min.js"></script> -->
+  </body>
+</html>

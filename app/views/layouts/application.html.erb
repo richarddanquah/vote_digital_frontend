@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoteDigital</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <!-- <link rel="stylesheet" href="/home/jude/voting_frontend/public/assets/css/style-starter.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+ 
+
+  <body>
+    <%= render 'layouts/messages' %>
+    <!-- site header -->
+<header id="site-header" class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href="/"><%= image_tag("loho.png") %></a>
+
+      <button class="navbar-toggler bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav m-auto">
+              <li class="nav-item active">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/about/">About</a>
+
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/voting/">Voting</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/contact/">Contact Us</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a href="/contact/" class="btn btn-primary btn-style">Get Started</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+</header>
+<!-- //site header -->
+
+  <%= yield %>
+
+
+
+
+
+
+<!-- site footer -->
+<footer id="site-footer">
+  <div class="top-footer">
+    <div class="container my-md-5 my-4">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="footer-logo mb-3">
+            <a href="/">
+
+            </a>
+          </div>
+          <div>
+            <p class=""></p>
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div class="col-lg-3 col-md-4 mt-lg-0 mt-5">
+          <h4 class="footer-title"></h4>
+          <ul class="footer-list">
+
+          </ul>
+        </div>
+        <!-- Newsletter -->
+        <div class="col-lg-5 col-md-8 mt-lg-0 mt-5">
+          <h4 class="footer-title"></h4>
+          <p class="mb-4">
+          </p>
+          <form class="newsletter-form">
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 text-lg-left text-center mb-lg-0 mb-3">
+          <p class="copyright">© 2020 VoteDigital. All Rights Reserved. Design by <a
+            href="/">TechNovate</a></p>
+        </div>
+        <div class="col-lg-4 align-center text-lg-right text-center">
+          <a href="#facebook" class="social-item"><span class="fa fa-facebook-f"></span></a>
+          <a href="#twitter" class="social-item"><span class="fa fa-twitter"></span></a>
+          <a href="#linkedin" class="social-item"><span class="fa fa-linkedin"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- //site footer -->
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- //move top -->
+
+<!-- javascript -->
+<!-- <script src="/home/jude/voting_frontend/public/assets/js/jquery-3.3.1.min.js"></script> -->
+
+<!-- libhtbox -->
+<!-- <script src="/home/jude/voting_frontend/public/assets/js/lightbox-plus-jquery.min.js"></script> -->
+
+<!-- particles -->
+<!-- <script src='/home/jude/voting_frontend/public/assets/js/particles.min.js'></script>
+<script src="/home/jude/voting_frontend/public/assets/js/script.js"></script> -->
+<!-- //particles -->
+
+<!-- owl carousel -->
+<!-- <script src="/home/jude/voting_frontend/public/assets/js/owl.carousel.js"></script> -->
+<script>
+  $(document).ready(function () {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      margin: 10,
+      nav: true,
+      loop: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        767: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  })
+</script>
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<!-- <script src="/home/jude/voting_frontend/public/assets/js/bootstrap.min.js"></script> -->
+  </body>
+</html>

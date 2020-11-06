@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoteDigital</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+
+
+    <!-- <link rel="stylesheet" href="http://votedigital.net/assets/css/style-starter.css"> -->
+
+  </head>
+
+<% votenomsss = Nominee.where(id: params[:id],status: true)[0] %>
+<% if votenomsss %>
+  <body>
+
+<section class="inner-banner">
+<div id="banner-bg-effect" class="banner-effect"></div>
+    </section>
+<% vote_nom = Nominee.where(id: params[:id],status: true)[0] %>
+  <% nom_name = vote_nom.name %>
+  <%cat_id = vote_nom.category_id %>
+<% vote_cat = Category.where(id: cat_id,status: true)[0] %>
+  <% cat_name = vote_cat.name %>
+  <% vote_award = Award.where(id: vote_cat.award_id)[0] %>
+   <% vote_amount = vote_award.award_amount %>
+  <% march = Merchant.where(id: vote_award.merchant_id)[0] %>
+
+
+<!-- stats section -->
+<section id="stats" class="stats">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 margin-md-60">
+                <h2 class="left-title">Vote <%= nom_name %> AS <%= cat_name %></h2>
+                <p class="white">Home / Make Payment</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- //stats section -->
+
+
+
+
+<!-- services page block 1 -->
+<section class="w3l-features">
+    <div class="call-w3">
+        <div class="container">
+
+
+            <div class="row main-cont-wthree-2 mt-5">
+                <div class="col-lg-5 feature-grid-left">
+                  <% if vote_nom.avatar2.presence %>
+                    <%= image_tag('https://res.cloudinary.com/deavqmclh/'+vote_nom.avatar2,class:"img-fluid", alt:"",style:"height: 300px; width: 350px;") %>
+                 <% else %>
+                 <%= image_tag('https://res.cloudinary.com/deavqmclh/',class:"img-fluid", alt:"",style:"height: 300px; width: 350px;") %>
+                 <% end %>
+                </div>
+                <div class="col-lg-7 feature-grid-right">
+                    <h4 class="title-right"><%= vote_award.name %></h4>
+                      <br>
+                     <h4 class="title-right"><strong><%= nom_name %></strong></h4>
+                      <br>
+                      <h2>GHC <%= vote_award.award_amount %>/vote</h2>
+                       <br>
+                      <h5 class="title-right">Category: <strong><%= cat_name %></strong></h5>
+
+
+
+                                <br>
+                            <div class="panel-body">
+     <%= simple_form_for(@transaction, url: payme_user_path(@transaction, id: params[:id]), method: :post) do |f| %>
+
+
+
+  <%= f.label :payment_types,"Select Payment Method", class:"control-label"%>
+  <%= f.input :payment_types,label:false,class:"form-control input-sm", collection: @paymentTypes,label_method: :first, value_method: :last,input_html: {id:"id_payment",style: "width:60%;"},boolean_style: :inline %>
+
+
+
+
+	<br>
+
+
+<div class="for_mobile_money">
+                     <%= f.label :vote_no_mm,"Enter Number of Votes", class:"control-label"%>
+                    <%= f.input :vote_no_mm, label: false, class: "form-control input-sm",input_html: {oninput:"myFunction(this.value)",style: "width:60%;"},boolean_style: :inline %>
+                   <br>
+
+                 <div class="row"><center><h3><strong>&nbsp&nbspAmount To Pay: GHC</strong>  <strong id="demo"></strong></h3></center></div>
+
+                  <br>
+                   <%= f.label :customer_number,"Enter Mobile Number", class:"control-label"%>
+                   <%= f.input :customer_number, label: false, class: "form-control input-sm",input_html: {style: "width:60%;"},boolean_style: :inline %>
+
+                   <br>
+
+                  <%= f.label :customer_netowrk,"Select Network", class:"control-label"%>
+		<%= f.input :customer_netowrk,label: false,class:"form-control input-sm", collection: @networks,label_method: :first, value_method: :last,input_html: {id:"id_voucher",style: "width:60%;"} %>
+  <br>
+    <div class="for_voucher">
+     <%= f.label :voucher,"Enter Voucher Code", class:"control-label"%>
+     <%= f.input :voucher, label:false, class: "form-control input-sm",input_html: {style: "width:60%;"},boolean_style: :inline %>
+
+    </div>
+
+</div>
+<br>
+
+
+
+
+
+<div class="for_visa">
+   <%= f.label :vote_no_card,"Enter Number of Votes", class:"control-label"%>
+                   <%= f.input :vote_no_card, label: false, class: "form-control input-sm",input_html: {oninput:"mySecondFunction(this.value)",style: "width:60%;"},boolean_style: :inline %>
+                   <br>
+
+                 <div class="row"><center><h3><strong>&nbsp&nbspAmount To Pay: GHC</strong>  <strong id="seconddemo"></strong></h3></center></div>
+
+<br>
+
+
+  <%= f.label :card_email,"Enter your Email", class:"control-label"%>
+ <%= f.input :card_email, label: false, class: "form-control input-sm",input_html: {style: "width:60%;"},boolean_style: :inline %>
+
+
+
+</div>
+
+
+
+<%= f.submit :submit, class: "btn btn-primary btn-style mt-4", value: "Make Payment" %>
+
+
+
+
+
+
+                      <% end %>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- services page block 1 -->
+
+    <!-- contact page breadcrumns -->
+<% if vote_award.id == 100 || vote_award.id == 300 || vote_award.id == 500 %>
+<center> <h2>VOTE CAST</h2></center>
+<br>
+
+
+ <% nom_vote = Nominee.where(category_id: cat_id,status: true) %>
+ <% nom_vote.each do |row| %>
+    
+<% row.name %>
+
+
+
+  <% if row.id == 275  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 400 %>
+
+
+
+
+
+  <% elsif row.id == 553  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+
+   <% elsif row.id == 557  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+   <% elsif row.id == 721  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 900 %>
+
+
+   <% elsif row.id == 722  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 900 %>
+
+ 
+  <% elsif row.id == 696  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+
+   <% elsif row.id == 189  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 700 %>
+
+
+  <% elsif row.id == 585  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1700 %>
+
+  <% elsif row.id == 462  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 300 %>
+
+
+  <% elsif row.id == 381  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 200 %>
+
+  <% elsif row.id == 318  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 300 %>
+
+  <% elsif row.id == 441  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+  <% elsif row.id == 722  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 50 %>
+
+ <% elsif row.id == 466  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 300 %>
+
+
+ <% elsif row.id == 276  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 5104 %>
+ 
+  <% elsif row.id == 277 %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 221 %>
+ 
+
+  <% elsif row.id == 278  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 570 %>
+
+
+  <% elsif row.id == 8  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 89 %>
+
+  <% elsif row.id == 9  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 598 %>
+
+
+  <% elsif row.id == 280  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 100 %>
+ 
+ 
+
+  <% elsif row.id == 15  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 212 %>
+
+
+   <% elsif row.id == 282  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 600 %>
+
+  <% elsif row.id == 281  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 382 %>
+
+  <% elsif row.id == 38  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 2711 %>
+
+  <% elsif row.id == 41  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 200 %>
+
+  <% elsif row.id == 58  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 80 %>
+
+
+  <% elsif row.id == 343  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1748 %>
+
+
+  <% elsif row.id == 119  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 9929 %>
+
+
+  <% elsif row.id == 84  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 30 %>
+
+  <% elsif row.id == 86  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 112 %>
+
+  <% elsif row.id == 101  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 35 %>
+
+
+  <% elsif row.id == 116  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 4117 %>
+
+
+  <% elsif row.id == 120  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1000 %>
+
+
+  <% elsif row.id == 122  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1100 %>
+
+  <% elsif row.id == 169  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 6000 %>
+
+
+
+
+  <% elsif row.id == 174  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 200 %>
+
+
+  <% elsif row.id == 255  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 200 %>
+
+  <% elsif row.id == 256  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 904 %>
+
+
+  <% elsif row.id == 257  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 100 %>
+
+
+  <% elsif row.id == 254  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 300 %>
+
+  <% elsif row.id == 300  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1000 %>
+
+
+ <% elsif row.id == 514  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 2500 %>
+
+<% elsif row.id == 544  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 70 %>
+
+  <% elsif row.id == 179  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 2000 %>
+
+
+  <% elsif row.id == 221  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1000 %>
+
+
+  <% elsif row.id == 245  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 500 %>
+
+
+ <% elsif row.id == 322  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 102 %>
+
+
+   <% elsif row.id == 196  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 11032 %>
+ 
+
+   <% elsif row.id == 197  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 3000 %>
+   
+      <% elsif row.id == 199  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 11000 %>
+
+   <% elsif row.id == 193  %>
+    <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+    <% vote_sum = vote_sums + 0 %>
+
+  
+    <% elsif row.id == 194  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 100 %>
+
+  <% elsif row.id == 195 %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 300 %>
+
+
+
+   <% elsif row.id ==  303 %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 300 %>
+
+
+   <% elsif row.id == 192  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 677 %>
+
+
+   <% elsif row.id == 71  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 2008 %>
+
+
+  <% elsif row.id == 191  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 100 %>
+
+   <% elsif row.id == 185  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 0 %>
+
+   <% elsif row.id == 363  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 0 %>
+
+
+  <% elsif row.id == 21  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 500 %>
+
+   <% elsif row.id == 202  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 379 %>
+
+    <% elsif row.id == 264 %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 3000 %>
+
+
+    <% elsif row.id == 373 %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 1200 %>
+
+
+     <% elsif row.id == 237 %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 320 %>
+
+
+   <% elsif row.id == 204  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 16791 %>
+
+
+   <% elsif row.id == 351  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+
+   <% elsif row.id == 252  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 500 %>
+
+    <% elsif row.id == 176  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 400 %>
+
+
+     <% elsif row.id == 342  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 400 %>
+
+
+
+     <% elsif row.id == 106  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+
+
+
+     <% elsif row.id == 103  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 500 %>
+
+
+      <% elsif row.id == 50  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 800 %>
+
+
+   <% elsif row.id == 27  %>
+  <% vote_sums = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+ <% vote_sum = vote_sums + 400 %>
+  
+<% else %>
+ <% vote_sum = Transaction.where("pay_status = true AND nominee_id = #{row.id} AND category_id = #{cat_id}").sum(:vote_no_mm) %>
+
+ <% end %>
+
+    <!-- stats section -->
+<!-- <section class="w3l-features">
+    <div class="container"> -->
+
+               <div class="row">
+                 <div class="col-md-3">
+
+                 </div>
+               
+                 <div class="col-md-6">
+
+                <div class="container">
+                                  
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th><strong><%= row.name %></strong></th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> <strong><h3 style="color: #124F8F;">  <%= vote_sum %></h3></strong></td>
+                     
+                    </tr>
+                   
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+                
+            
+              </div>
+       
+  <!--   </div>
+</section> -->
+<!-- //stats section -->
+
+ <% end %>
+
+<% end %>
+
+
+<style>
+
+
+/* Dashed border */
+hr.dashed {
+  border-top: 3px dashed #bbb;
+}
+
+/* Dotted border */
+hr.dotted {
+  border-top: 3px dotted #bbb;
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+/* Rounded border */
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
+</style>
+
+
+<script type="text/javascript">
+	$(document).change(function() {
+		var payment_id = $("#id_payment")
+
+		if (payment_id.val() == 1) {
+			console.log("I am in the condition with mobile money value as "+ payment_id.val())
+
+			$(".for_mobile_money").show();
+			$(".for_visa").hide();
+      $("for_master_card").hide();
+      var vouchs_id = $("#id_voucher")
+  		console.log("I am voucher"+vouchs_id.val())
+  		if (vouchs_id.val() == 'VDF'){
+  			$(".for_voucher").show();
+  		}else {
+  			$(".for_voucher").hide();
+  		}
+
+
+
+		}
+
+		if (payment_id.val() == 2) {
+			console.log("I am in the condition with Visa value as "+ payment_id.val())
+
+			$(".for_visa").show();
+			$(".for_mobile_money").hide();
+      $("for_master_card").hide();
+
+
+
+
+		}
+
+    if (payment_id.val() == 3){
+      console.log("I am in the condition with master card value as "+ payment_id.val())
+      $(".for_master_card").show();
+      $(".for_visa").hide();
+      $(".for_mobile_money").hide();
+      $("for_voucher").hide();
+    }
+
+
+
+
+	});
+
+
+   function myFunction(val) {
+              amts =  '<%= vote_amount %>';
+        vals = val * amts
+        document.getElementById("demo").innerHTML = vals.toFixed(2);
+    }
+
+  function mySecondFunction(val) {
+    amts =  '<%= vote_amount %>';
+        vals = val * amts
+        document.getElementById("seconddemo").innerHTML = vals.toFixed(2);
+    }
+
+    function mySecondFunction1(val){
+      amts =  '<%= vote_amount %>';
+          vals = val * amts
+          document.getElementById("seconddemo1").innerHTML = vals.toFixed(2);
+    }
+
+
+
+
+</script>
+
+
+<style type="text/css">
+  .for_mobile_money {
+    display:none;
+  }
+ .for_visa {
+   display:none;
+
+}
+.for_master_card {
+  display:none;
+}
+
+.for_voucher{
+   display:none;
+}
+
+</style>
+
+
+
+
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- //move top -->
+
+<!-- javascript -->
+<!-- <script src="http://votedigital.net/assets/js/jquery-3.3.1.min.js"></script> -->
+
+<!-- libhtbox -->
+<!-- <script src="http://votedigital.net/assets/js/lightbox-plus-jquery.min.js"></script> -->
+
+<!-- particles -->
+<!-- <script src='http://votedigital.net/assets/js/particles.min.js'></script>
+<script src="http://votedigital.net/assets/js/script.js"></script> -->
+<!-- //particles -->
+
+<!-- owl carousel -->
+<!-- <script src="http://votedigital.net/assets/js/owl.carousel.js"></script> -->
+<script>
+  $(document).ready(function () {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      margin: 10,
+      nav: true,
+      loop: false,
+      responsive: {
+        0: {
+          items: 1
+        },
+        767: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    })
+  })
+</script>
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+  $(function () {
+    $('.navbar-toggler').click(function () {
+      $('body').toggleClass('noscroll');
+    })
+  });
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!-- bootstrap -->
+<!-- <script src="http://votedigital.net/assets/js/bootstrap.min.js"></script> -->
+  </body>
+
+<% else %>
+
+<body>
+
+
+  <section class="inner-banner">
+    <div id="banner-bg-effect" class="banner-effect"></div>
+        </section>
+<!-- stats section -->
+<section id="stats" class="stats">
+
+
+<div class="container">
+<div class="row">
+<div class="col-lg-12 margin-md-60">
+<h2 class="left-title">Nominee Do not Exist</h2>
+
+</div>
+
+</div>
+</div>
+</section>
+<!-- //stats section --></body>
+<% end %>
+</html>

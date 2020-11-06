@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Merchant</th>
+      <th>Trans</th>
+      <th>Customer number</th>
+      <th>Customer netowrk</th>
+      <th>Trans type</th>
+      <th>Amount</th>
+      <th>Reference</th>
+      <th>Pay status</th>
+      <th>Award</th>
+      <th>Category</th>
+      <th>Nominee</th>
+      <th>Techo msg</th>
+      <th>Payment types</th>
+      <th>Card name</th>
+      <th>Card email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.merchant_id %></td>
+        <td><%= transaction.trans_id %></td>
+        <td><%= transaction.customer_number %></td>
+        <td><%= transaction.customer_netowrk %></td>
+        <td><%= transaction.trans_type %></td>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.reference %></td>
+        <td><%= transaction.pay_status %></td>
+        <td><%= transaction.award_id %></td>
+        <td><%= transaction.category_id %></td>
+        <td><%= transaction.nominee_id %></td>
+        <td><%= transaction.techo_msg %></td>
+        <td><%= transaction.payment_types %></td>
+        <td><%= transaction.card_name %></td>
+        <td><%= transaction.card_email %></td>
+        <td><%= link_to 'Show', transaction %></td>
+        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction', new_transaction_path %>
